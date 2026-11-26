@@ -55,11 +55,11 @@ export default function CategoriesPanel({ data, update }) {
     <div className="space-y-4">
       <button className="btn btn-primary" onClick={() => setEdit({ id: '', name: '', description: '', image: '', subsText: '' })}>Add category</button>
       {removing && (
-        <div className="panel space-y-3 border-red-800" role="alertdialog" aria-label="Delete category">
+        <div className="panel space-y-3 border-red-400" role="alertdialog" aria-label="Delete category">
           <p>Delete <strong>{removing.name}</strong>? It has {count(removing.id)} product(s).</p>
           {count(removing.id) > 0 && <Select label="Move its products to" value={moveTo} onChange={setMoveTo} options={[['', 'Choose a category'], ...data.categories.filter((c) => c.id !== removing.id).map((c) => [c.id, c.name])]} />}
           <div className="flex gap-3">
-            <button className="btn btn-sm bg-red-800 text-white" disabled={count(removing.id) > 0 && !moveTo} onClick={remove}>Delete category</button>
+            <button className="btn btn-sm bg-red-700 text-white" disabled={count(removing.id) > 0 && !moveTo} onClick={remove}>Delete category</button>
             <button className="btn btn-secondary btn-sm" onClick={() => setRemoving(null)}>Cancel</button>
           </div>
         </div>
@@ -67,7 +67,7 @@ export default function CategoriesPanel({ data, update }) {
       <Repeater title="Categories in display order" items={data.categories} onChange={(next) => next.length === data.categories.length ? update({ categories: next }) : (setRemoving(data.categories.find((c) => !next.includes(c))), setMoveTo(''), window.scrollTo(0, 0))}
         render={(c) => (
           <div className="flex flex-wrap items-center justify-between gap-2">
-            <span><strong>{c.name}</strong> <span className="text-sm text-gray-600">{count(c.id)} products, {c.subcategories.length} subcategories</span></span>
+            <span><strong>{c.name}</strong> <span className="text-sm text-muted">{count(c.id)} products, {c.subcategories.length} subcategories</span></span>
             <button type="button" className="btn btn-secondary btn-sm" aria-label={`Edit ${c.name}`} onClick={() => setEdit({ ...c, subsText: c.subcategories.join('\n') })}>Edit</button>
           </div>
         )} />

@@ -29,7 +29,7 @@ function HeroVisual({ images }) {
         <img src={assetUrl(images[at])} alt={`Showroom banner ${at + 1}`} className="aspect-[4/3] w-full object-cover" />
         {images.length > 1 && (
           <div className="mt-2 flex justify-center">
-            {images.map((_, n) => <button key={n} className="p-2" aria-label={`Show banner ${n + 1}`} aria-current={n === at} onClick={() => { setI(n); setPaused(true); }}><span className={`block h-1.5 w-8 ${n === at ? 'bg-ink' : 'bg-silver'}`} /></button>)}
+            {images.map((_, n) => <button key={n} className="p-2" aria-label={`Show banner ${n + 1}`} aria-current={n === at} onClick={() => { setI(n); setPaused(true); }}><span className={`block h-1.5 w-8 ${n === at ? 'bg-gold' : 'bg-line'}`} /></button>)}
           </div>
         )}
       </div>
@@ -37,12 +37,12 @@ function HeroVisual({ images }) {
   }
   // Without banner photos, an abstract ceiling-and-wall study based on the logo's shapes.
   return (
-    <div aria-hidden className="relative grid aspect-[4/3] grid-cols-[1fr_2.4fr_1fr] overflow-hidden bg-ink">
+    <div aria-hidden className="relative grid aspect-[4/3] grid-cols-[1fr_2.4fr_1fr] overflow-hidden rounded-lg border border-line bg-bg">
       <div className="flutes" />
-      <div className="flex items-center justify-center bg-[radial-gradient(circle,#6b5844_0%,#262b38_75%)]">
+      <div className="flex items-center justify-center bg-[radial-gradient(circle,color-mix(in_srgb,var(--color-gold)_30%,var(--color-bg))_0%,var(--color-bg)_75%)]">
         <div className="cove w-[88%]"><i /><i /><i /></div>
       </div>
-      <div className="bg-[repeating-linear-gradient(90deg,#d6d0c8_0_30px,#fff1d8_30px_33px,#a9a199_33px_36px)]" />
+      <div className="bg-[repeating-linear-gradient(90deg,var(--color-surface-2)_0_30px,var(--color-gold)_30px_32px,var(--color-bg)_32px_36px)]" />
     </div>
   );
 }
@@ -55,17 +55,17 @@ export default function Home() {
   const years = new Date().getFullYear() - Number(s.company.since);
   return (
     <>
-      <section className="bg-stone">
+      <section className="bg-[radial-gradient(ellipse_at_top_left,color-mix(in_srgb,var(--color-gold)_16%,var(--color-bg))_0%,var(--color-bg)_55%)]">
         <div className="wrap grid items-center gap-8 py-10 lg:grid-cols-[1fr_1.05fr] lg:py-16">
           <div>
             <h1 className="lg:text-6xl">{s.hero.headline}</h1>
-            <p className="mt-4 max-w-xl text-lg text-ink-2">{s.hero.description}</p>
+            <p className="mt-4 max-w-xl text-lg text-muted">{s.hero.description}</p>
             <div className="mt-7 flex flex-wrap gap-3">
               {s.hero.buttons.filter((b) => safeLink(b.link)).map((b) => (
                 <a key={b.label + b.link} href={safeLink(b.link)} className={`btn ${b.style === 'secondary' ? 'btn-secondary' : 'btn-primary'}`}>{b.label}</a>
               ))}
             </div>
-            <p className="mt-6 border-l-2 border-bronze pl-3 font-display text-lg">{h.experienceText}</p>
+            <p className="mt-6 border-l-2 border-gold pl-3 font-display text-lg">{h.experienceText}</p>
           </div>
           <HeroVisual images={s.hero.images} />
         </div>
@@ -85,15 +85,15 @@ export default function Home() {
           <h2>{h.aboutTitle}</h2>
           <p className="mt-3 max-w-xl">{h.aboutText}</p>
           <p className="mt-6 flex items-center gap-4">
-            <span className="font-display text-5xl text-bronze">{years}</span>
+            <span className="font-display text-5xl text-gold">{years}</span>
             <span className="max-w-48 text-sm">years since we started in {s.company.since}</span>
           </p>
           <a className="btn btn-secondary mt-6" href="#/about">About us</a>
         </div>
         <div>
           <h2>{h.whyTitle}</h2>
-          <ul className="mt-3 divide-y divide-silver border-y border-silver">
-            {h.why.map((w) => <li key={w.title} className="py-4"><h3>{w.title}</h3><p className="text-ink-2">{w.text}</p></li>)}
+          <ul className="mt-3 divide-y divide-line border-y border-line">
+            {h.why.map((w) => <li key={w.title} className="py-4"><h3>{w.title}</h3><p className="text-muted">{w.text}</p></li>)}
           </ul>
         </div>
       </section>

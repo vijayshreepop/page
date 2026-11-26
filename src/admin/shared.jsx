@@ -49,7 +49,7 @@ export function ImageUpload({ folder, nameHint, onPath, label = 'Choose photo' }
   };
   return (
     <div>
-      <label className="btn btn-secondary btn-sm cursor-pointer focus-within:outline-3 focus-within:outline-bronze"><LuUpload aria-hidden />{label}
+      <label className="btn btn-secondary btn-sm cursor-pointer focus-within:outline-3 focus-within:outline-gold"><LuUpload aria-hidden />{label}
         <input type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={pick} />
       </label>
       {note && <p role="status" className="mt-1 text-sm break-all">{note}</p>}
@@ -74,10 +74,10 @@ export function Repeater({ title, items, onChange, blank, render, addLabel }) {
     <fieldset className="space-y-2">
       <legend className="field">{title}</legend>
       {items.map((item, i) => (
-        <div key={i} className="flex items-start gap-1 border border-silver p-2">
+        <div key={i} className="flex items-start gap-1 border border-line p-2">
           <div className="min-w-0 flex-1">{render(item, (v) => set(i, v), i)}</div>
           <button type="button" className="p-2 disabled:opacity-30" disabled={i === 0} onClick={() => up(i)} aria-label={`Move item ${i + 1} up`}><LuArrowUp aria-hidden /></button>
-          <button type="button" className="p-2 text-red-800" onClick={() => onChange(items.filter((_, n) => n !== i))} aria-label={`Remove item ${i + 1}`}><LuTrash2 aria-hidden /></button>
+          <button type="button" className="p-2 text-red-300" onClick={() => onChange(items.filter((_, n) => n !== i))} aria-label={`Remove item ${i + 1}`}><LuTrash2 aria-hidden /></button>
         </div>
       ))}
       {addLabel && <button type="button" className="btn btn-secondary btn-sm" onClick={() => onChange([...items, blank()])}><LuPlus aria-hidden />{addLabel}</button>}
@@ -100,7 +100,7 @@ export function ImagePath({ label, value, onChange, folder, nameHint }) {
 }
 
 export const Errors = ({ list }) => (list.length ? (
-  <div role="alert" className="border-l-4 border-red-800 bg-red-50 p-3 text-sm">
+  <div role="alert" className="border-l-4 border-red-400 bg-red-950 p-3 text-sm">
     <p className="font-semibold">Fix these before saving:</p>
     <ul className="list-disc pl-5">{list.slice(0, 12).map((e, i) => <li key={i}>{e}</li>)}</ul>
     {list.length > 12 && <p>and {list.length - 12} more.</p>}

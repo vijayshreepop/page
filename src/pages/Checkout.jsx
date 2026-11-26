@@ -10,7 +10,7 @@ import Totals from '../components/Totals.jsx';
 const STATES = ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal', 'Andaman and Nicobar Islands', 'Chandigarh', 'Dadra and Nagar Haveli and Daman and Diu', 'Delhi', 'Jammu and Kashmir', 'Ladakh', 'Lakshadweep', 'Puducherry'];
 
 export default function Checkout({ query }) {
-  const { cart, products, settings, categoryName, customer, setCustomer, setLastOrder, preview } = useStore();
+  const { cart, products, settings, categoryName, customer, setCustomer, setLastOrder, preview, text } = useStore();
   const buyId = query.buy;
   const [buyQty, setBuyQty] = useState(Number(query.qty) || 1);
   const [errors, setErrors] = useState({});
@@ -41,12 +41,12 @@ export default function Checkout({ query }) {
   const single = buyId ? order.lines[0] : null;
   return (
     <>
-      <PageHead title="Checkout">Enter your details and check the order. Nothing is paid online.</PageHead>
+      <PageHead title={text.checkoutTitle}>{text.checkoutIntro}</PageHead>
       <form onSubmit={submit} noValidate className="wrap grid items-start gap-6 py-8 lg:grid-cols-[1fr_24rem]">
         <fieldset className="panel space-y-4">
           <legend className="sr-only">Your details</legend>
           <h2 className="text-2xl">Your details</h2>
-          {Object.values(errors).some(Boolean) && <p role="alert" className="font-semibold text-red-800">Check the highlighted fields.</p>}
+          {Object.values(errors).some(Boolean) && <p role="alert" className="font-semibold text-red-300">Check the highlighted fields.</p>}
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Full name" required autoComplete="name" maxLength="80" {...props('name')} />
             <Field label="Mobile number" required type="tel" autoComplete="tel" maxLength="18" {...props('mobile')} />
@@ -64,16 +64,16 @@ export default function Checkout({ query }) {
             <Field label="GST number" maxLength="15" {...props('gst')} />
           </div>
           <Field label="Delivery instructions" as="textarea" rows="2" maxLength="500" {...props('instructions')} />
-          <p className="text-sm text-gray-600">This website does not save your details. They are placed in a WhatsApp message that you send yourself.</p>
+          <p className="text-sm text-muted">This website does not save your details. They are placed in a WhatsApp message that you send yourself.</p>
         </fieldset>
         <section className="panel space-y-4" aria-label="Order summary">
           <h2 className="text-2xl">Order summary</h2>
-          <ul className="divide-y divide-silver">
+          <ul className="divide-y divide-line">
             {order.lines.map((l) => (
               <li key={l.id} className="py-3">
                 <p className="font-semibold">{l.product?.name || 'Removed product'}</p>
-                {l.product && <p className="text-sm break-words text-gray-600">Code {l.product.code}{l.product.sample ? ', sample listing' : ''}</p>}
-                {l.error ? <p role="alert" className="text-sm text-red-800">{l.error}</p> : (
+                {l.product && <p className="text-sm break-words text-muted">Code {l.product.code}{l.product.sample ? ', sample listing' : ''}</p>}
+                {l.error ? <p role="alert" className="text-sm text-red-300">{l.error}</p> : (
                   <div className="flex flex-wrap justify-between gap-2 text-sm">
                     <span>{l.qty} {unitLabel(l.product)} × {money(l.unitPrice)}{l.unitPrice < l.listPrice && <> (regular {money(l.listPrice)})</>}</span>
                     <strong>{money(l.total)}</strong>
@@ -86,8 +86,8 @@ export default function Checkout({ query }) {
             <div><span className="field mb-1">Quantity</span><QtyInput product={single.product} value={buyQty} onChange={setBuyQty} /></div>
           )}
           <Totals order={order} />
-          {!order.valid && <p className="text-sm text-red-800">{buyId ? 'Correct the quantity or choose another product.' : <>Go to your <a className="link" href="#/cart">cart</a> to fix the highlighted products.</>}</p>}
-          <button className="btn btn-wa w-full text-base" disabled={!order.valid}>Send order on WhatsApp</button>
+          {!order.valid && <p className="text-sm text-red-300">{buyId ? 'Correct the quantity or choose another product.' : <>Go to your <a className="link" href="#/cart">cart</a> to fix the highlighted products.</>}</p>}
+          <button className="btn btn-wa w-full text-base" disabled={!order.valid}>{text.sendOrder}</button>
           <p className="text-sm">WhatsApp opens with your order written out. You must press <strong>SEND</strong> there.</p>
         </section>
       </form>

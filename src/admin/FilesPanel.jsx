@@ -42,7 +42,7 @@ export default function FilesPanel({ data, update, changed, reset, hasDraft }) {
     setMessage(`CSV applied: ${result.added} added, ${result.updated} updated.`);
   };
   const upload = (label, accept, handler) => (
-    <label className="btn btn-secondary btn-sm cursor-pointer focus-within:outline-3 focus-within:outline-bronze">{label}<input type="file" accept={accept} className="sr-only" onChange={(e) => readFile(e, handler)} /></label>
+    <label className="btn btn-secondary btn-sm cursor-pointer focus-within:outline-3 focus-within:outline-gold">{label}<input type="file" accept={accept} className="sr-only" onChange={(e) => readFile(e, handler)} /></label>
   );
 
   return (
@@ -76,7 +76,7 @@ export default function FilesPanel({ data, update, changed, reset, hasDraft }) {
         <Errors list={errors} />
         {message && <p role="status" className="font-semibold">{message}</p>}
       </section>
-      {hasDraft && <button className="link text-red-800" onClick={() => window.confirm('Discard all unpublished edits in this browser? Export first if you want to keep them.') && reset()}>Discard draft and start again from the published website</button>}
+      {hasDraft && <button className="link text-red-300" onClick={() => window.confirm('Discard all unpublished edits in this browser? Export first if you want to keep them.') && reset()}>Discard draft and start again from the published website</button>}
     </div>
   );
 }

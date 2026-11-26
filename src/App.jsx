@@ -62,11 +62,11 @@ class Boundary extends Component {
 
 const Loading = ({ error, retry }) => (
   <div className="wrap py-24 text-center" role={error ? 'alert' : 'status'}>
-    <img src="./assets/logo/vijay-shree-logo.png" alt="VIJAY SHREE POP & PVC" className="mx-auto w-48" />
+    <img src="./assets/logo/vijay-shree-logo.png" alt="VIJAY SHREE POP & PVC" className="logo-plate mx-auto w-48" />
     {error ? (
       <>
         <p className="mt-4 text-lg">The catalogue could not load.</p>
-        <p className="mx-auto mt-1 max-w-xl text-sm text-gray-600">{error}</p>
+        <p className="mx-auto mt-1 max-w-xl text-sm text-muted">{error}</p>
         <button className="btn btn-primary mt-4" onClick={retry}>Try again</button>
         <p className="mt-4">To order now, call <a className="link" href="tel:+919429093121">+91 94290 93121</a>.</p>
       </>

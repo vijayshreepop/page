@@ -8,6 +8,8 @@ import { validateCustomer, normalizeMobile, validPin } from '../src/lib/forms.js
 import { productsToCsv, mergeCsv, blankProduct } from '../src/lib/csv.js';
 import { validateAll } from '../src/lib/schema.js';
 import { filterProducts, safeLink } from '../src/lib/catalog.js';
+import { validateTheme, DEFAULT_THEME } from '../src/lib/theme.js';
+import { resolveText, DEFAULT_TEXT } from '../src/lib/text.js';
 import { fingerprint, reconcile } from '../src/lib/sync.js';
 
 // Test fixtures are defined here, so editing your catalogue never breaks these tests.
@@ -100,4 +102,13 @@ test('draft keeps edited files and follows published changes elsewhere', () => {
   const r = reconcile(draft, pub2);
   assert.deepEqual([r.data.products, r.data.gallery], [[2], [9]]);
   assert.equal(r.base.products, fingerprint(pub1).products);
+});
+test('theme rejects unreadable colours and text falls back to defaults', () => {
+  assert.deepEqual(validateTheme(undefined), []);
+  assert.deepEqual(validateTheme(DEFAULT_THEME), []);
+  // Settings saved by the earlier light theme use other names and must still load.
+  assert.deepEqual(validateTheme({ navy: '#131c28', grey: '#d9d3cf', whatsapp: '#131c28' }), []);
+  for (const bad of [{ background: '#ffffff' }, { text: '#333333' }, { gold: '#443300' }, { waButton: '#ddffdd' }, { gold: 'gold' }]) assert.ok(validateTheme(bad).length, JSON.stringify(bad));
+  assert.equal(resolveText({ buyNow: '  ' }).buyNow, DEFAULT_TEXT.buyNow);
+  assert.equal(resolveText({ buyNow: 'Order now' }).buyNow, 'Order now');
 });

@@ -3,10 +3,10 @@ import { PageHead } from '../components/ui.jsx';
 import { CategoryTiles } from '../components/Cards.jsx';
 
 export default function Categories() {
-  const { categories } = useStore();
+  const { categories, text } = useStore();
   return (
     <>
-      <PageHead title="Product categories">Choose a category to see its products and subcategories.</PageHead>
+      <PageHead title={text.categoriesTitle}>{text.categoriesIntro}</PageHead>
       <div className="wrap py-8"><CategoryTiles categories={categories} /></div>
     </>
   );

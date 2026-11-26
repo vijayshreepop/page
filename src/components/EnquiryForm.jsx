@@ -34,7 +34,7 @@ export default function EnquiryForm({ product }) {
       <Field label="Message" as="textarea" rows="3" maxLength="600" {...props('message')} />
       <button className="btn btn-wa w-full">Send enquiry on WhatsApp</button>
       {url && (
-        <p role="status" className="border-l-4 border-[#0f6b4f] bg-emerald-50 p-3">
+        <p role="status" className="border-l-4 border-wa bg-surface-2 p-3">
           Your enquiry is ready in WhatsApp. Press <strong>SEND</strong> in WhatsApp to submit it. <a className="link" href={url} target="_blank" rel="noopener noreferrer">Open WhatsApp again</a>
         </p>
       )}

@@ -8,7 +8,7 @@ import EnquiryForm from '../components/EnquiryForm.jsx';
 import { whatsappLink } from '../components/Layout.jsx';
 
 export default function Product({ id, query }) {
-  const { products, add, settings, categoryName } = useStore();
+  const { products, add, settings, categoryName, text } = useStore();
   const p = products.find((x) => x.id === id);
   const [qty, setQty] = useState(1);
   const [shot, setShot] = useState(0);
@@ -31,38 +31,38 @@ export default function Product({ id, query }) {
       <nav aria-label="Breadcrumb" className="text-sm"><a className="link" href="#/products">All products</a> / <a className="link" href={`#/category/${p.category}`}>{categoryName(p.category)}</a></nav>
       <div className="mt-5 grid gap-8 lg:grid-cols-2">
         <div>
-          <Img src={images[shot]} alt={p.name} fit="object-contain" className="aspect-square w-full border border-silver bg-white" eager />
+          <Img src={images[shot]} alt={p.name} fit="object-contain" className="aspect-square w-full border border-line bg-surface" eager />
           {images.length > 1 && (
             <ul className="mt-3 flex flex-wrap gap-2">
-              {images.map((src, i) => <li key={src + i}><button aria-label={`Show photo ${i + 1}`} aria-current={i === shot} onClick={() => setShot(i)} className={`block border-2 ${i === shot ? 'border-bronze' : 'border-transparent'}`}><Img src={src} alt="" className="size-18" /></button></li>)}
+              {images.map((src, i) => <li key={src + i}><button aria-label={`Show photo ${i + 1}`} aria-current={i === shot} onClick={() => setShot(i)} className={`block border-2 ${i === shot ? 'border-gold' : 'border-transparent'}`}><Img src={src} alt="" className="size-18" /></button></li>)}
             </ul>
           )}
         </div>
         <div className="space-y-4">
           <h1>{p.name}</h1>
-          <p className="text-sm text-gray-600">Code {p.code}</p>
+          <p className="text-sm text-muted">Code {p.code}</p>
           {p.sample && <SampleBadge />}
           <Price product={p} large />
           <Stock product={p} />
           {p.description && <p className="max-w-xl whitespace-pre-line">{p.description}</p>}
           {fixed ? (
             <div className="space-y-3">
-              {blocked ? <p className="font-semibold text-red-800">{blocked}</p> : <div><QtyInput product={p} value={qty} onChange={setQty} /> <span className="ml-2 text-sm">{unitLabel(p)}</span>{qtyError && <p role="alert" className="mt-1 text-sm text-red-800">{qtyError}</p>}</div>}
+              {blocked ? <p className="font-semibold text-red-300">{blocked}</p> : <div><QtyInput product={p} value={qty} onChange={setQty} /> <span className="ml-2 text-sm">{unitLabel(p)}</span>{qtyError && <p role="alert" className="mt-1 text-sm text-red-300">{qtyError}</p>}</div>}
               <div className="flex flex-wrap gap-3">
-                <button className="btn btn-secondary" disabled={!!blocked || !!qtyError} onClick={() => add(p, qty)}>Add to cart</button>
-                <button className="btn btn-primary" disabled={!!blocked || !!qtyError} onClick={() => go('/checkout', { buy: p.id, qty })}>Buy now</button>
+                <button className="btn btn-secondary" disabled={!!blocked || !!qtyError} onClick={() => add(p, qty)}>{text.addToCart}</button>
+                <button className="btn btn-primary" disabled={!!blocked || !!qtyError} onClick={() => go('/checkout', { buy: p.id, qty })}>{text.buyNow}</button>
               </div>
               <button className="link text-sm" onClick={() => setAsking(!asking)} aria-expanded={asking}>Ask about this product</button>
             </div>
           ) : (
             <div className="flex flex-wrap gap-3">
-              <button className="btn btn-primary" onClick={() => { setAsking(true); requestAnimationFrame(() => document.querySelector('#enquiry input')?.focus()); }}>Request a quote</button>
-              <a className="btn btn-secondary" href={whatsappLink(settings, quick)} target="_blank" rel="noopener noreferrer">WhatsApp enquiry</a>
+              <button className="btn btn-primary" onClick={() => { setAsking(true); requestAnimationFrame(() => document.querySelector('#enquiry input')?.focus()); }}>{text.requestQuote}</button>
+              <a className="btn btn-secondary" href={whatsappLink(settings, quick)} target="_blank" rel="noopener noreferrer">{text.whatsappEnquiry}</a>
             </div>
           )}
-          <table className="w-full border-t border-silver text-left text-sm">
+          <table className="w-full border-t border-line text-left text-sm">
             <caption className="sr-only">Specifications</caption>
-            <tbody>{rows.map(([k, v], i) => <tr key={k + i} className="border-b border-silver"><th scope="row" className="w-2/5 py-2 pr-3 font-semibold">{k}</th><td className="py-2 break-words">{v}</td></tr>)}</tbody>
+            <tbody>{rows.map(([k, v], i) => <tr key={k + i} className="border-b border-line"><th scope="row" className="w-2/5 py-2 pr-3 font-semibold">{k}</th><td className="py-2 break-words">{v}</td></tr>)}</tbody>
           </table>
           {(asking || !fixed) && <EnquiryForm key={p.id} product={p} />}
         </div>

@@ -6,7 +6,7 @@ import { whatsappLink } from '../components/Layout.jsx';
 import { openWhatsApp } from '../lib/whatsapp.js';
 
 export default function Contact() {
-  const { settings: s } = useStore();
+  const { settings: s, text } = useStore();
   const [f, setF] = useState({ name: '', message: '' });
   const [url, setUrl] = useState('');
   const set = (k, v) => { setF({ ...f, [k]: v }); setUrl(''); };
@@ -17,7 +17,7 @@ export default function Contact() {
   };
   return (
     <>
-      <PageHead title="Contact us">Visit the shop, call us or send a WhatsApp message.</PageHead>
+      <PageHead title={text.contactTitle}>{text.contactIntro}</PageHead>
       <div className="wrap space-y-8 py-10">
         <ContactBlock />
         <form onSubmit={send} className="panel max-w-xl space-y-4">

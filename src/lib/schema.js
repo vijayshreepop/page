@@ -1,4 +1,5 @@
 import { UNITS, AVAILABILITY } from './pricing.js';
+import { validateTheme } from './theme.js';
 
 const isObj = (v) => v && typeof v === 'object' && !Array.isArray(v);
 const str = (v) => typeof v === 'string';
@@ -64,6 +65,9 @@ export function validateSettings(s) {
   const lists = [[s.contact.phones, 'contact.phones'], [s.hero.images, 'hero.images'], [s.hero.buttons, 'hero.buttons'],
     [s.home.categoryIds, 'home.categoryIds'], [s.home.featuredProductIds, 'home.featuredProductIds'], [s.home.why, 'home.why'], [s.about.paragraphs, 'about.paragraphs']];
   for (const [v, n] of lists) if (!Array.isArray(v)) errors.push(`Settings: ${n} must be a list.`);
+  errors.push(...validateTheme(s.theme));
+  if (s.text !== undefined && !(isObj(s.text) && Object.values(s.text).every(str))) errors.push('Settings: "text" must contain only text values.');
+  if (s.company.logo !== undefined && !str(s.company.logo)) errors.push('Settings: logo must be a file path.');
   return errors;
 }
 

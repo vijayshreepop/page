@@ -4,13 +4,13 @@ import { PageHead } from '../components/ui.jsx';
 import { CategoryTiles, ProductGrid } from '../components/Cards.jsx';
 
 export default function Shop() {
-  const { products, categories, settings } = useStore();
+  const { products, categories, settings, text } = useStore();
   const ids = settings.home.featuredProductIds;
   const featured = ids.map((id) => products.find((p) => p.id === id)).filter(Boolean).slice(0, 8);
   const newest = filterProducts(products, categories, { sort: 'newest' }).slice(0, 8);
   return (
     <>
-      <PageHead title="Shop">Add priced products to your cart, or ask us for a quote. You send everything to us on WhatsApp.</PageHead>
+      <PageHead title={text.shopTitle}>{text.shopIntro}</PageHead>
       <div className="wrap space-y-14 py-8">
         {featured.length > 0 && <section><h2 className="mb-5">{settings.home.featuredTitle}</h2><ProductGrid products={featured} /></section>}
         <section><h2 className="mb-5">{settings.home.categoryTitle}</h2><CategoryTiles categories={categories} /></section>

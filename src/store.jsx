@@ -2,6 +2,9 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { CART_KEY, parseCart, addItem } from './lib/cart.js';
 import { FILES, isPreview, readDraft, setPreview } from './lib/draft.js';
 import { validateAll } from './lib/schema.js';
+import { applyTheme } from './lib/theme.js';
+import { DEFAULT_LOGO, resolveText } from './lib/text.js';
+import { assetUrl } from './lib/draft.js';
 
 const Ctx = createContext(null);
 export const useStore = () => useContext(Ctx);
@@ -65,11 +68,17 @@ export function StoreProvider({ children, fallback }) {
 
   const togglePreview = useCallback((on) => { setPreview(on); setPreviewOn(on); setDraftVersion((v) => v + 1); }, []);
 
+  useEffect(() => {
+    if (!data) return;
+    applyTheme(data.settings.theme);
+    document.querySelector('link[rel="icon"]')?.setAttribute('href', assetUrl(data.settings.company.logo || DEFAULT_LOGO));
+  }, [data]);
+
   if (!data) return fallback({ error, retry: load });
 
   const categoryName = (id) => data.categories.find((c) => c.id === id)?.name || id;
   const value = {
-    ...data, published, categoryName, cart, setCart, add, toast, notify, customer, setCustomer, lastOrder, setLastOrder,
+    ...data, published, text: resolveText(data.settings.text), logo: assetUrl(data.settings.company.logo || DEFAULT_LOGO), categoryName, cart, setCart, add, toast, notify, customer, setCustomer, lastOrder, setLastOrder,
     preview: draftValid, previewRequested: previewOn, togglePreview,
   };
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;

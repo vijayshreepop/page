@@ -45,7 +45,7 @@ export function ContactPanel({ data, update }) {
           render={(v, change) => <input className="input" aria-label="Phone number" value={v} onChange={(e) => change(e.target.value)} />} />
         {field('Email address', 'contact', 'email', { type: 'email' })}
         {field('WhatsApp number for orders (country code, digits only)', 'contact', 'whatsappNumber', { inputMode: 'numeric' })}
-        <p className="text-sm text-gray-600">All orders and enquiries go to this number once published. Check it carefully. If you set a WhatsApp link below, it is used only by the general chat buttons.</p>
+        <p className="text-sm text-muted">All orders and enquiries go to this number once published. Check it carefully. If you set a WhatsApp link below, it is used only by the general chat buttons.</p>
       </section>
       <section className="panel space-y-3"><h2 className="text-2xl">Social media links</h2>
         <p className="text-sm">Empty links are hidden on the website.</p>

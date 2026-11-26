@@ -44,6 +44,18 @@ Work on one computer at a time and publish before switching. A draft is lost if 
 
 Fixed price or quote: edit a product and change **Pricing mode**.
 
+## Colours, logo and wording
+
+Admin > **Design and text** changes:
+
+- the four base colours of the dark theme: background `#0a0f1c`, text `#f3f1ec`, gold `#d4af6a` and WhatsApp buttons `#0f6b4f`. Unreadable combinations are rejected. The logo sits on a light plate so its dark lettering stays readable;
+- the logo file path;
+- menu labels, the main product and order buttons, and page headings.
+
+Save, preview, export `settings.json` and upload it to `public/data/`. If the logo changes, also update the paths in `index.html` and in the loading screen in `src/App.jsx`.
+
+Form labels, error messages, some smaller buttons and notices, and the WhatsApp message layout are in the code under `src/`.
+
 ## Product photos
 
 1. In the editor, press **Choose photo** (or use the **Images** tab). The photo is resized to 1600px or less, compressed and downloaded. The path is filled in for you. In the Images tab, copy the path yourself.

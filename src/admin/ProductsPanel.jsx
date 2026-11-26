@@ -36,7 +36,7 @@ function Editor({ initial, isNew, data, onSave, onCancel }) {
         {text('Subcategory', 'subcategory', { list: 'subs' })}
         <datalist id="subs">{cat?.subcategories.map((s) => <option key={s} value={s} />)}</datalist>
       </div>
-      <fieldset className="grid gap-4 border border-bronze p-3 sm:grid-cols-3">
+      <fieldset className="grid gap-4 border border-gold p-3 sm:grid-cols-3">
         <legend className="field px-1">Pricing</legend>
         <Select label="Pricing mode" value={p.pricingMode} onChange={set('pricingMode')} options={[['fixed', 'Fixed price'], ['quote', 'Request a quote']]} />
         {text('Price (₹)', 'price', { type: 'number', min: 0, step: 'any', disabled: p.pricingMode !== 'fixed' })}
@@ -87,18 +87,18 @@ export default function ProductsPanel({ data, update }) {
       <div className="flex flex-wrap items-end gap-3">
         <button className="btn btn-primary" onClick={() => setEditing(blankProduct())}>Add product</button>
         <div className="min-w-48 flex-1"><Text label="Find a product" value={q} onChange={(v) => { setQ(v); setPage(1); }} type="search" /></div>
-        {samples > 0 && <button className="btn btn-secondary btn-sm text-red-800" onClick={() => window.confirm(`Delete all ${samples} sample listings from the draft?`) && removeWhere((p) => p.sample)}>Delete all {samples} samples</button>}
+        {samples > 0 && <button className="btn btn-secondary btn-sm text-red-300" onClick={() => window.confirm(`Delete all ${samples} sample listings from the draft?`) && removeWhere((p) => p.sample)}>Delete all {samples} samples</button>}
       </div>
-      <ul className="divide-y divide-silver border border-silver bg-white">
+      <ul className="divide-y divide-line border border-line bg-surface">
         {list.slice((at - 1) * PER, at * PER).map((p) => (
           <li key={p.id} className="flex flex-wrap items-center gap-3 p-3">
             <Thumb path={p.image} />
             <div className="min-w-0 flex-1">
               <p className="font-semibold">{p.name}</p>
-              <p className="text-sm break-words text-gray-600">{p.code}. {isFixed(p) ? `${money(p.price)}${Number(p.discountPrice) > 0 ? `, discount price ${money(p.discountPrice)}` : ''}` : 'Request a quote'}{p.sample ? '. Sample' : ''}</p>
+              <p className="text-sm break-words text-muted">{p.code}. {isFixed(p) ? `${money(p.price)}${Number(p.discountPrice) > 0 ? `, discount price ${money(p.discountPrice)}` : ''}` : 'Request a quote'}{p.sample ? '. Sample' : ''}</p>
             </div>
             <button className="btn btn-secondary btn-sm" aria-label={`Edit ${p.name}`} onClick={() => setEditing(p)}>Edit</button>
-            <button className="btn btn-sm text-red-800" aria-label={`Delete ${p.name}`} onClick={() => window.confirm(`Delete ${p.name} (${p.code})?`) && removeWhere((x) => x.id === p.id)}>Delete</button>
+            <button className="btn btn-sm text-red-300" aria-label={`Delete ${p.name}`} onClick={() => window.confirm(`Delete ${p.name} (${p.code})?`) && removeWhere((x) => x.id === p.id)}>Delete</button>
           </li>
         ))}
         {!list.length && <li className="p-4">No products found.</li>}

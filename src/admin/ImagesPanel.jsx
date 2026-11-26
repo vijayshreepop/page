@@ -39,7 +39,7 @@ export default function ImagesPanel({ data }) {
         <h2 className="text-2xl">Images used by the website ({all.length})</h2>
         <p className="text-sm">{missingMain} product(s) have no main image. A path showing "Photo coming soon" means the file is not on the website yet.</p>
         <ul className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {all.slice(0, page * 40).map(([path, by]) => <li key={path} className="text-xs break-all"><Img src={path} alt={path} className="aspect-square w-full" /><p>{path}</p><p className="text-gray-600">Used by {by.slice(0, 3).join(', ')}</p></li>)}
+          {all.slice(0, page * 40).map(([path, by]) => <li key={path} className="text-xs break-all"><Img src={path} alt={path} className="aspect-square w-full" /><p>{path}</p><p className="text-muted">Used by {by.slice(0, 3).join(', ')}</p></li>)}
         </ul>
         {all.length > page * 40 && <button className="btn btn-secondary btn-sm mt-3" onClick={() => setPage(page + 1)}>Show more</button>}
       </section>

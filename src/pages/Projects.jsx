@@ -15,24 +15,24 @@ export function GalleryGrid({ items, onOpen, Img = BaseImg }) {
   return (
     <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((g, i) => {
-        const body = <><Img src={g.image} alt={g.title || 'Interior project'} className="aspect-[4/3] w-full" /><span className="block p-3 text-left"><span className="block font-display text-lg">{g.title}</span><span className="text-sm text-gray-600">{g.caption}</span></span></>;
-        return <li key={g.id || i} className="border border-silver bg-white">{onOpen ? <button className="block w-full" onClick={() => onOpen(g)}>{body}</button> : <a href="#/projects" className="block">{body}</a>}</li>;
+        const body = <><Img src={g.image} alt={g.title || 'Interior project'} className="aspect-[4/3] w-full" /><span className="block p-3 text-left"><span className="block font-display text-lg">{g.title}</span><span className="text-sm text-muted">{g.caption}</span></span></>;
+        return <li key={g.id || i} className="border border-line bg-surface">{onOpen ? <button className="block w-full" onClick={() => onOpen(g)}>{body}</button> : <a href="#/projects" className="block">{body}</a>}</li>;
       })}
     </ul>
   );
 }
 
 export default function Projects() {
-  const { gallery } = useStore();
+  const { gallery, text } = useStore();
   const [open, setOpen] = useState(null);
   const dialog = useRef(null);
   useEffect(() => { if (open && !dialog.current.open) dialog.current.showModal(); }, [open]);
   return (
     <>
-      <PageHead title="Interior projects">Ceiling and wall work.</PageHead>
+      <PageHead title={text.projectsTitle}>{text.projectsIntro}</PageHead>
       <div className="wrap py-8">
         <GalleryGrid items={gallery} onOpen={setOpen} />
-        <dialog ref={dialog} onClose={() => setOpen(null)} className="m-auto w-[min(56rem,95vw)] bg-white p-3 backdrop:bg-black/70" aria-label="Project photo">
+        <dialog ref={dialog} onClose={() => setOpen(null)} className="m-auto w-[min(56rem,95vw)] bg-surface p-3 backdrop:bg-black/70" aria-label="Project photo">
           {open && <>
             <BaseImg src={open.image} alt={open.title || 'Interior project'} fit="object-contain" className="max-h-[70vh] w-full" eager />
             <div className="mt-3 flex items-start justify-between gap-3">

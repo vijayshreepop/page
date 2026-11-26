@@ -8,7 +8,7 @@ import { Empty, PageHead } from '../components/ui.jsx';
 import { ProductGrid } from '../components/Cards.jsx';
 
 export default function Products({ query, categoryId }) {
-  const { products, categories, settings } = useStore();
+  const { products, categories, settings, text } = useStore();
   const [show, setShow] = useState(false);
   const path = categoryId ? `/category/${categoryId}` : '/products';
   const f = { ...query, category: categoryId || query.category || '' };
@@ -44,7 +44,7 @@ export default function Products({ query, categoryId }) {
 
   return (
     <>
-      <PageHead title={categoryId ? category.name : 'All products'}>{categoryId ? category.description : 'Search by product name, code, category or subcategory.'}</PageHead>
+      <PageHead title={categoryId ? category.name : text.productsTitle}>{categoryId ? category.description : text.productsIntro}</PageHead>
       <div className="wrap grid items-start gap-6 py-8 lg:grid-cols-[15rem_1fr]">
         <aside>
           <button className="btn btn-secondary w-full lg:hidden" aria-expanded={show} onClick={() => setShow(!show)}><LuSlidersHorizontal aria-hidden />{show ? 'Hide filters' : 'Show filters'}</button>
@@ -70,7 +70,7 @@ export default function Products({ query, categoryId }) {
               </select>
             </label>
           </div>
-          <p className="mb-4 text-sm text-ink-2" role="status">{list.length} {list.length === 1 ? 'product' : 'products'}</p>
+          <p className="mb-4 text-sm text-muted" role="status">{list.length} {list.length === 1 ? 'product' : 'products'}</p>
           {visible.length ? <ProductGrid products={visible} className="xl:grid-cols-4" /> : (
             <Empty title="No products match"><p>Try a shorter search or fewer filters.</p><button className="btn btn-primary mt-4" onClick={() => replace(path)}>Clear search and filters</button></Empty>
           )}
