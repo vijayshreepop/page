@@ -1,0 +1,77 @@
+{
+  "company": {
+    "name": "VIJAY SHREE POP & PVC",
+    "tagline": "Complete Ceiling & Interior Solutions",
+    "since": 2009,
+    "category": "POP, Gypsum Ceiling Materials, PVC Ceiling Materials, Decorative Wall Panels and Interior Decoration Products",
+    "address": "Shop No:-4, Momai Campus, Near Orbit Plaza, Devadh Gam Road, Godadra, Surat, Gujarat, India"
+  },
+  "contact": {
+    "phones": [
+      "+91 94290 93121",
+      "+91 79763 19469"
+    ],
+    "email": "",
+    "whatsappNumber": "919429093121"
+  },
+  "social": {
+    "whatsapp": "",
+    "instagram": "https://www.instagram.com/vijayshreepop121/",
+    "facebook": "",
+    "youtube": "",
+    "googleMaps": "https://www.google.com/maps/search/?api=1&query=Momai+Campus+Near+Orbit+Plaza+Devadh+Gam+Road+Godadra+Surat"
+  },
+  "hero": {
+    "images": [],
+    "headline": "Complete Ceiling & Interior Solutions",
+    "description": "POP, gypsum and PVC ceiling materials, decorative wall panels and interior products from our shop in Godadra, Surat. Choose online and send your order on WhatsApp.",
+    "buttons": [
+      {
+        "label": "Shop products",
+        "link": "#/shop",
+        "style": "primary"
+      },
+      {
+        "label": "View categories",
+        "link": "#/categories",
+        "style": "secondary"
+      }
+    ]
+  },
+  "home": {
+    "categoryTitle": "Shop by category",
+    "categoryIds": [],
+    "featuredTitle": "Featured products",
+    "featuredProductIds": [
+      "smp-fp-001",
+      "smp-uvs-001",
+      "smp-pvc-001",
+      "smp-wpvc-001"
+    ],
+    "aboutTitle": "About our business",
+    "aboutText": "VIJAY SHREE POP & PVC supplies ceiling and interior decoration materials in Surat.",
+    "experienceText": "Serving customers since 2009",
+    "whyTitle": "Why choose us",
+    "why": [
+      {
+        "title": "In business since 2009",
+        "text": "Long experience with ceiling and interior materials."
+      },
+      {
+        "title": "One place for ceilings and walls",
+        "text": "POP, gypsum, PVC, wall panels, mouldings and fitting accessories."
+      },
+      {
+        "title": "Talk to us directly",
+        "text": "Orders and price enquiries come to our WhatsApp. We confirm price, availability, payment and delivery with you."
+      }
+    ],
+    "projectsTitle": "Interior projects"
+  },
+  "about": {
+    "paragraphs": [
+      "VIJAY SHREE POP & PVC has been in business since 2009. We deal in POP, gypsum ceiling materials, PVC ceiling materials, decorative wall panels and interior decoration products.",
+      "Visit our shop in Godadra, Surat, or browse the catalogue here and contact us on WhatsApp."
+    ]
+  }
+}

@@ -1,0 +1,126 @@
+[
+  {
+    "id": "pop-gypsum-materials",
+    "name": "POP & Gypsum Materials",
+    "description": "Plaster of Paris, gypsum powder and related raw materials.",
+    "image": "",
+    "subcategories": [
+      "POP Powder",
+      "Gypsum Powder"
+    ]
+  },
+  {
+    "id": "gypsum-ceiling-products",
+    "name": "Gypsum Ceiling Products",
+    "description": "Gypsum boards and tiles for false ceilings.",
+    "image": "",
+    "subcategories": [
+      "Gypsum Boards",
+      "Ceiling Tiles"
+    ]
+  },
+  {
+    "id": "pvc-ceiling-panels",
+    "name": "PVC Ceiling Panels",
+    "description": "PVC panels for ceilings in homes, shops and offices.",
+    "image": "",
+    "subcategories": [
+      "Plain",
+      "Printed",
+      "Wooden Finish"
+    ]
+  },
+  {
+    "id": "fluted-panels",
+    "name": "Fluted Panels",
+    "description": "Ribbed wall panels for feature walls and TV units.",
+    "image": "",
+    "subcategories": [
+      "Interior"
+    ]
+  },
+  {
+    "id": "wpvc-panels",
+    "name": "WPVC Panels",
+    "description": "Wood-polymer composite panels for walls.",
+    "image": "",
+    "subcategories": []
+  },
+  {
+    "id": "soffit-panels",
+    "name": "Soffit Panels",
+    "description": "Panels for soffits, balconies and covered areas.",
+    "image": "",
+    "subcategories": []
+  },
+  {
+    "id": "charcoal-panels",
+    "name": "Charcoal Panels",
+    "description": "Decorative charcoal-finish wall panels and louvers.",
+    "image": "",
+    "subcategories": []
+  },
+  {
+    "id": "uv-marble-sheets",
+    "name": "UV Marble Sheets",
+    "description": "Glossy marble-look sheets for walls.",
+    "image": "",
+    "subcategories": []
+  },
+  {
+    "id": "uv-marble-rolls",
+    "name": "UV Marble Rolls",
+    "description": "Flexible marble-look material supplied in rolls.",
+    "image": "",
+    "subcategories": []
+  },
+  {
+    "id": "pu-stone-panels",
+    "name": "PU Stone Panels",
+    "description": "Lightweight stone-texture panels.",
+    "image": "",
+    "subcategories": []
+  },
+  {
+    "id": "pu-feather-panels",
+    "name": "PU Feather Panels",
+    "description": "Lightweight textured PU decorative panels.",
+    "image": "",
+    "subcategories": []
+  },
+  {
+    "id": "moulding-patti",
+    "name": "Moulding Patti",
+    "description": "Mouldings and trims for ceilings and walls.",
+    "image": "",
+    "subcategories": [
+      "Wall Moulding",
+      "Ceiling Cornice"
+    ]
+  },
+  {
+    "id": "glass-tiles",
+    "name": "Glass Tiles",
+    "description": "Decorative glass tiles.",
+    "image": "",
+    "subcategories": []
+  },
+  {
+    "id": "ceiling-accessories",
+    "name": "Ceiling Accessories",
+    "description": "Channels, screws, tapes and other fitting items.",
+    "image": "",
+    "subcategories": [
+      "Channels",
+      "Fasteners",
+      "Tapes"
+    ]
+  },
+  {
+    "id": "other-interior-products",
+    "name": "Other Interior Products",
+    "description": "More interior decoration materials.",
+    "image": "",
+    "subcategories": []
+  }
+]
