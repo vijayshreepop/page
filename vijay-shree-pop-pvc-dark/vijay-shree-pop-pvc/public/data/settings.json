@@ -1,0 +1,112 @@
+{
+  "company": {
+    "name": "VIJAY SHREE POP & PVC",
+    "tagline": "Complete Ceiling & Interior Solutions",
+    "since": 2009,
+    "category": "POP, Gypsum Ceiling Materials, PVC Ceiling Materials, Decorative Wall Panels and Interior Decoration Products",
+    "address": "Shop No:-4, Momai Campus, Near Orbit Plaza, Devadh Gam Road, Godadra, Surat, Gujarat, India",
+    "logo": "assets/logo/vijay-shree-logo.png"
+  },
+  "contact": {
+    "phones": [
+      "+91 94290 93121",
+      "+91 79763 19469"
+    ],
+    "email": "",
+    "whatsappNumber": "919429093121"
+  },
+  "social": {
+    "whatsapp": "",
+    "instagram": "https://www.instagram.com/vijayshreepop121/",
+    "facebook": "",
+    "youtube": "",
+    "googleMaps": "https://www.google.com/maps/search/?api=1&query=Momai+Campus+Near+Orbit+Plaza+Devadh+Gam+Road+Godadra+Surat"
+  },
+  "hero": {
+    "images": [],
+    "headline": "Complete Ceiling & Interior Solutions",
+    "description": "POP, gypsum and PVC ceiling materials, decorative wall panels and interior products from our shop in Godadra, Surat. Choose online and send your order on WhatsApp.",
+    "buttons": [
+      {
+        "label": "Shop products",
+        "link": "#/shop",
+        "style": "primary"
+      },
+      {
+        "label": "View categories",
+        "link": "#/categories",
+        "style": "secondary"
+      }
+    ]
+  },
+  "home": {
+    "categoryTitle": "Shop by category",
+    "categoryIds": [],
+    "featuredTitle": "Featured products",
+    "featuredProductIds": [
+      "smp-fp-001",
+      "smp-uvs-001",
+      "smp-pvc-001",
+      "smp-wpvc-001"
+    ],
+    "aboutTitle": "About our business",
+    "aboutText": "VIJAY SHREE POP & PVC supplies ceiling and interior decoration materials in Surat.",
+    "experienceText": "Serving customers since 2009",
+    "whyTitle": "Why choose us",
+    "why": [
+      {
+        "title": "In business since 2009",
+        "text": "Long experience with ceiling and interior materials."
+      },
+      {
+        "title": "One place for ceilings and walls",
+        "text": "POP, gypsum, PVC, wall panels, mouldings and fitting accessories."
+      },
+      {
+        "title": "Talk to us directly",
+        "text": "Orders and price enquiries come to our WhatsApp. We confirm price, availability, payment and delivery with you."
+      }
+    ],
+    "projectsTitle": "Interior projects"
+  },
+  "about": {
+    "paragraphs": [
+      "VIJAY SHREE POP & PVC has been in business since 2009. We deal in POP, gypsum ceiling materials, PVC ceiling materials, decorative wall panels and interior decoration products.",
+      "Visit our shop in Godadra, Surat, or browse the catalogue here and contact us on WhatsApp."
+    ]
+  },
+  "theme": {
+    "background": "#0a0f1c",
+    "text": "#f3f1ec",
+    "gold": "#d4af6a",
+    "waButton": "#0f6b4f"
+  },
+  "text": {
+    "navHome": "Home",
+    "navShop": "Shop",
+    "navProducts": "All products",
+    "navCategories": "Categories",
+    "navProjects": "Projects",
+    "navAbout": "About us",
+    "navContact": "Contact us",
+    "addToCart": "Add to cart",
+    "buyNow": "Buy now",
+    "requestQuote": "Request a quote",
+    "whatsappEnquiry": "WhatsApp enquiry",
+    "sendOrder": "Send order on WhatsApp",
+    "shopTitle": "Shop",
+    "shopIntro": "Add priced products to your cart, or ask us for a quote. You send everything to us on WhatsApp.",
+    "productsTitle": "All products",
+    "productsIntro": "Search by product name, code, category or subcategory.",
+    "categoriesTitle": "Product categories",
+    "categoriesIntro": "Choose a category to see its products and subcategories.",
+    "projectsTitle": "Interior projects",
+    "projectsIntro": "Ceiling and wall work.",
+    "aboutTitle": "About us",
+    "contactTitle": "Contact us",
+    "contactIntro": "Visit the shop, call us or send a WhatsApp message.",
+    "cartTitle": "Shopping cart",
+    "checkoutTitle": "Checkout",
+    "checkoutIntro": "Enter your details and check the order. Nothing is paid online."
+  }
+}
